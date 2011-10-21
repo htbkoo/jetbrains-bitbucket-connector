@@ -17,6 +17,8 @@
   ]]></change-notes>
 
   <depends>com.intellij.modules.lang</depends>
+  <depends optional="true" config-file="tasks.xml">com.intellij.tasks</depends>
+    
   <depends>hg4idea</depends>
   <depends>Git4Idea</depends>
 

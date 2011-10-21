@@ -36,8 +36,9 @@ import java.util.*;
 import java.util.List;
 
 public class BitbucketUtil {
-
-    public static final String BITBUCKET = "bitbucket.org";
+    public static final String BITBUCKET = "Bitbucket";
+    public static final String BITBUCKET_DN = "bitbucket.org";
+    public static final String API_URL_BASE = "https://api." + BITBUCKET_DN + "/1.0";
     public static final Icon ICON = IconLoader.getIcon("res/bitbucket.png", BitbucketUtil.class);
 
     private static HttpClient getClient(String login, String password) {
@@ -49,8 +50,16 @@ public class BitbucketUtil {
         return client;
     }
 
-    public static Element request(String username, String password, String url, boolean post, Map<String, String> params) throws IOException, JDOMException {
-        url = "https://api." + BITBUCKET + "/1.0" + url + "?format=xml";
+    public static Element request(String username, String password, String url, boolean post, @Nullable Map<String, String> params) throws IOException, JDOMException {
+        return request(username, password, url, post, params, null);
+    }
+
+
+    public static Element request(String username, String password, String url, boolean post, @Nullable Map<String, String> params, @Nullable String query) throws IOException, JDOMException {
+        url = API_URL_BASE + url + "?format=xml";
+
+        if (query != null)
+            url = url + "&" + query;
 
         HttpClient client = getClient(username, password);
         HttpMethod res;
