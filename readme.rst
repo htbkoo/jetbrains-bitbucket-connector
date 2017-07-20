@@ -1,3 +1,7 @@
+Update: This plugin is no longer supported and will not be updated. 
+
+----
+
 Atlassian has worked with JetBrains to develop a new Bitbucket plugin for the JetBrains IDEs that offers integration allowing you to:
 
 * checkout your existing Bitbucket repository and auto-open it as a project
